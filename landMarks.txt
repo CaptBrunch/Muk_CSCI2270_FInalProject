@@ -1,0 +1,10 @@
+Boston, Freedom Trail, 0
+Boulder, Colorado Chatauqua, 100
+Chicago, Navy Pier, 20
+Disneyland, Disney Land, 150
+Miami, Disney World, 150
+New Orleans, French Quarter, 20
+New York, Statue of Liberty, 18
+Portland, Crater Lake, 10
+San Francisco, Golden Gate Bridge, 0 
+Seattle, Space Needle, 14
