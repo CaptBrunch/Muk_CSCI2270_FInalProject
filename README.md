@@ -5,4 +5,4 @@ Just have the text files bestCities.txt and landMarks.txt and run it with the ma
 System Requirements: Windows, Mac, Linux
 Group Members: Sany Dan Muk
 Contributors:
-Open Issues/bugs: I have not found any yet, hopefully you can.
+Open Issues/bugs: Under budget menu it will seg fault when budget is entered , hopefully you can more.
