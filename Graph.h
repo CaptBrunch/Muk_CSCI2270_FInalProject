@@ -23,6 +23,17 @@ struct vertex{
 struct queueVertex{
     int distance;
     std::vector<vertex *> path;
+    bool operator<(const queueVertex& a) const
+    {
+        return distance > a.distance;
+    }
+};
+struct Comparator {
+public:
+    bool operator()(const vertex* a, const vertex* b)
+    {
+        return (a->distance > b->distance);
+    }
 };
 class Graph
 {
@@ -36,6 +47,7 @@ class Graph
         void shortestPath(std::string startingCity, std::string endingCity);
         void shortestDistance(std::string startingCity,std::string endingCity);
         void shortestDistanceRoundTrip(std::string startingCity);
+        void time(int);
 
     protected:
     private:

@@ -1,10 +1,12 @@
+#include "Graph.h"
+#include "Graph.cpp"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <sstream>
 #include <queue>
 #include <cstring>
-#include "Graph.h"
+
 
 using namespace std;
 
@@ -56,35 +58,34 @@ int main(int argc, char*argv[])
     }
 
     ifstream file2;
-    file2.open()("landMarks.txt")
+    file2.open("landMarks.txt");
     List l;
 
-    {
-        if(file2.open())
+        if(file2.is_open())
         {
             string line;
             string line2;
+            string line3;
             int cost;
             string landM;
             string city;
+
+            while(getline(file2,line))
+            {
+                int index = line.find(",");
+                city = line.substr(0,index);
+                line2 = line.substr(index+1, line.length());
+
+                int index2 = line2.find(",");
+                landM = line2.substr(0,index2);
+                line3 = line2.substr(index2+1, line2.length());
+
+                int index3 = line3.find(",");
+                cost = stoi(line3.substr(0,index3));
+
+                l.createLL(city,landM,cost);
+            }
         }
-
-        while(getline(file2,line))
-        {
-            int index = line.find(",");
-            city = line.substr(0,index);
-            line2 = line.substr(index+1, line.length());
-
-            int index2 = line2,find(",");
-            landM = line2.substr(0,index2);
-            line3 = line2.substr(index2+1,line2.length());
-
-            int index3 = line3.find(",");
-            cost = stoi(line3.substr(0,index3));
-
-            l.createLL(city,landM,cost);
-        }
-    }
 
     tour.assignDistricts();
     string input;
@@ -100,6 +101,7 @@ int main(int argc, char*argv[])
         cout << "6. Quit" << endl;
         getline(cin,input);
         int choiceI = stoi(input);
+
 
         switch(choiceI)
         {
@@ -174,23 +176,25 @@ int main(int argc, char*argv[])
                 {
                     cout << "The city you entered is not in our database." << endl;
                 }
-                else{
-                l.popularLandmarks(startingCity);
+                else
+                {
+                    l.popularLandmarks(startingCity);
+                }
             }
         case 6:
             {
                 cout << "Goodbye!" << endl;
                 false;
-                break;
+                return 0;
 
             }
         default:
             {
                 cout << "Please choose a menu option" << endl;
             }
-
         }
     }
+}
 
 
 

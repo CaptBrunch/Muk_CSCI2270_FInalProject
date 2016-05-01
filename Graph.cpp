@@ -295,7 +295,7 @@ void Graph::shortestDistance(std::string startingCity,std::string endingCity)//f
         cur->visited = true;
 
         // If we have found the correct path, output and return.
-        if (cur == end)
+        if (cur == endC)
         {
             int i = cur->ID;
             int c=cur->distance;
@@ -312,41 +312,6 @@ void Graph::shortestDistance(std::string startingCity,std::string endingCity)//f
         }
     }
     return;
-}
-
-
-void Graph::time(int i)// using dist from shortest distance function from
-{
-    int minutes2 = i/100;
-    int minutes = minutes2*60;
-    int convert_to_hours;
-    convert_to_hours = minutes / 60;
-    int remainder2;
-    remainder2 = minutes % 60;
-    cout<<endl;
-    cout<<"TIME OF TRAVELLING"<<endl;
-    cout<<"=================="<<endl;
-    cout<<"The time to get to your destination by car is ";
-    if (convert_to_hours < 1)
-    {
-        cout << "less than an hour." << endl;
-    }
-    else
-    {
-        if (convert_to_hours > 1)
-            cout << "approximately " << convert_to_hours << " hours ";
-        else
-            cout << "approximately " << convert_to_hours << " hour ";
-        if (remainder2 != 0)
-        {
-            if (remainder2 > 1)
-                cout << "and " << remainder2 << "minutes." << endl;
-            else
-                cout << "and " << remainder2 << "minute." << endl;
-        }
-    }
-
-    cout<<endl;
 }
 
 void Graph::shortestDistanceRoundTrip(std::string startingCity)
@@ -446,44 +411,44 @@ void List::createLL(string name,string landM,int cost)
 void List::print() //prints link list.
 {
     cout << "===CURRENT PATH===" << endl;
-    current = head;
+    curr = head;
     while(curr != NULL)
     {
-        cout << current->name << "," << current->landM.name << "," << "Cost to Visit:" << current->landM.cost << endl;
-        current = current->next
+        cout << curr->name << "," << curr->landmark.name << "," << "Cost to Visit:" << curr->landmark.cost << endl;
+        curr = curr->next;
     }
     cout << "NULL" << endl;
 }
 
 void List::poi(string city)
 {
-    current = head;
-    while(current != NULL)
+    curr = head;
+    while(curr != NULL)
     {
-        if(current->name == city)
+        if(curr->name == city)
         {
             break;
         }
-        current = current->next;
+        curr = curr->next;
     }
 
-    cout << "In " << current->name " I suggest you visit these points of interest:" << endl;
-    cout << "POI: " << current->landmark.name << endl;
-    cout << "Cost: " << current->landmark.cost << endl;
+    cout << "In " << curr->name << " I suggest you visit these points of interest:" << endl;
+    cout << "POI: " << curr->landmark.name << endl;
+    cout << "Cost: " << curr->landmark.cost << endl;
 }
 void List::popularLandmarks(string city) // this function will output a landmark to go to in the city
 {
-    current = head;
-    while(current != NULL)
+    curr = head;
+    while(curr != NULL)
     {
-        if(current->name == city)
+        if(curr->name == city)
         {
             break;
         }
-        current = current->next;
+        curr = curr->next;
     }
-    cout << "In " << current->name << " I suggest visiting: " << current->landmark.name << endl;
-    cout << " It costs:" << current->landmark.cost;
+    cout << "In " << curr->name << " I suggest visiting: " << curr->landmark.name << endl;
+    cout << " It costs:" << curr->landmark.cost;
 }
 
 void List::Budget(string city,int bu) //funtcion that based on the city and your budget outputs what you can afford
@@ -491,14 +456,14 @@ void List::Budget(string city,int bu) //funtcion that based on the city and your
     curr = head;
     while(curr !=NULL)
     {
-        if (curr->name== city)
+        if (curr->name == city)
         {
             break;
         }
         curr=curr ->next;
     }
 
-    if(bu>=curr->landmark.cost)
+    if(bu >= curr->landmark.cost)
     {
         cout << "You can go to " << curr->landmark.name << endl;
     }
